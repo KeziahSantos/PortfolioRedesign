@@ -3022,8 +3022,8 @@ function PortfolioApp({ onAdminClick, cmsCases, onViewCMSCase, experienceItems, 
             <div className="flex gap-6 items-center">
               <a href="mailto:keziahcosta@gmail.com" className="text-muted-foreground hover:text-accent transition-colors">Email</a>
               <a href="https://www.linkedin.com/in/keziahsantos" target="_blank" rel="noopener noreferrer" className="text-muted-foreground hover:text-accent transition-colors">LinkedIn</a>
-              <button onClick={onAdminClick} title="Admin" className="text-muted-foreground/20 hover:text-muted-foreground/60 transition-colors p-1 rounded">
-                <Lock size={12} />
+              <button onClick={onAdminClick} className="text-muted-foreground/40 hover:text-muted-foreground text-xs transition-colors">
+                admin
               </button>
             </div>
           </div>
@@ -3036,8 +3036,7 @@ function PortfolioApp({ onAdminClick, cmsCases, onViewCMSCase, experienceItems, 
 // ─── Root ─────────────────────────────────────────────────────────────────────
 
 export default function App() {
-  const initialMode: AppMode = window.location.hash === "#admin" ? "adminLogin" : "portfolio";
-  const [mode, setMode] = useState<AppMode>(initialMode);
+  const [mode, setMode] = useState<AppMode>("portfolio");
   const [isAdmin, setIsAdmin] = useState(false);
   const [cmsCases, setCmsCases] = useState<CMSCase[]>(loadCases);
   const [experienceItems, setExperienceItems] = useState<ExperienceItem[]>(loadExperience);
@@ -3054,16 +3053,8 @@ export default function App() {
   const handleRecommendationsChange = useCallback((r: Recommendation[]) => { setRecommendations(r); saveRecommendations(r); }, []);
   const handleTalksChange = useCallback((t: TalksSection) => { setTalksSection(t); saveTalks(t); }, []);
 
-  useEffect(() => {
-    const onHash = () => {
-      if (window.location.hash === "#admin") setMode("adminLogin");
-    };
-    window.addEventListener("hashchange", onHash);
-    return () => window.removeEventListener("hashchange", onHash);
-  }, []);
-
-  const handleLogin = () => { setIsAdmin(true); setMode("admin"); window.history.replaceState(null, "", " "); toast.success("Bem-vinda, Keziah!"); };
-  const handleLogout = () => { setIsAdmin(false); setMode("portfolio"); window.history.replaceState(null, "", " "); toast("Sessão encerrada"); };
+  const handleLogin = () => { setIsAdmin(true); setMode("admin"); toast.success("Bem-vinda, Keziah!"); };
+  const handleLogout = () => { setIsAdmin(false); setMode("portfolio"); toast("Sessão encerrada"); };
 
   const handleViewCMSCase = (id: string) => {
     const c = cmsCases.find(x => x.id === id);
