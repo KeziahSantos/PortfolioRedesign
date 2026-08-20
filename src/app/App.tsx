@@ -3016,12 +3016,12 @@ function PortfolioApp({ onAdminClick, cmsCases, onViewCMSCase, experienceItems, 
       <footer className="border-t border-border py-12 px-8 md:px-24">
         <div className="max-w-7xl mx-auto">
           <div className="flex flex-col md:flex-row justify-between items-center gap-6">
-            <p className="text-muted-foreground">
+            <p className="text-muted-foreground text-base">
               © 2026 Keziah Santos. {lang === "pt" ? "Todos os direitos reservados." : "All rights reserved."}
             </p>
             <div className="flex gap-6 items-center">
-              <a href="mailto:keziahcosta@gmail.com" className="text-muted-foreground hover:text-accent transition-colors">Email</a>
-              <a href="https://www.linkedin.com/in/keziahsantos" target="_blank" rel="noopener noreferrer" className="text-muted-foreground hover:text-accent transition-colors">LinkedIn</a>
+              <a href="mailto:keziahcosta@gmail.com" className="text-muted-foreground hover:text-accent transition-colors text-base">Email</a>
+              <a href="https://www.linkedin.com/in/keziahsantos" target="_blank" rel="noopener noreferrer" className="text-muted-foreground hover:text-accent transition-colors text-base">LinkedIn</a>
               <button onClick={onAdminClick} title="Admin" className="text-muted-foreground/20 hover:text-muted-foreground/60 transition-colors p-1 rounded">
                 <Lock size={12} />
               </button>

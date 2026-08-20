@@ -14,8 +14,9 @@ export function Navbar({ currentLang, onLanguageChange, onNavigate, showTalks = 
 
   const baseItems = {
     pt: [
-      { label: "Trabalhos", value: "work" },
+     
       { label: "Sobre", value: "about" },
+      { label: "Projetos", value: "work" },
       { label: "Palestras", value: "talks", conditional: true },
       { label: "Experiência", value: "experience" },
       { label: "Contato", value: "contact" },
@@ -70,6 +71,7 @@ export function Navbar({ currentLang, onLanguageChange, onNavigate, showTalks = 
 
             <div className="flex items-center gap-4">
               {/* Language toggle */}
+              {/*
               <div className="flex items-center gap-1 bg-[#F3F3F1] rounded-lg p-1">
                 {(["pt", "en"] as const).map(l => (
                   <button
@@ -85,6 +87,7 @@ export function Navbar({ currentLang, onLanguageChange, onNavigate, showTalks = 
                   </button>
                 ))}
               </div>
+              */}
 
               <button
                 onClick={() => setMobileMenuOpen(!mobileMenuOpen)}

@@ -50,7 +50,7 @@ export function ProjectCard({
         </p>
 
         <div className="flex items-center gap-2 text-accent font-medium group-hover:gap-4 transition-all">
-          <span>View case study</span>
+          <span>Ver mais</span>
           <ArrowRight className="w-5 h-5" />
         </div>
       </div>
