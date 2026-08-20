@@ -3016,6 +3016,7 @@ function PortfolioApp({ onAdminClick, cmsCases, onViewCMSCase, experienceItems, 
       <footer className="border-t border-border py-12 px-8 md:px-24">
         <div className="max-w-7xl mx-auto">
           <div className="flex flex-col md:flex-row justify-between items-center gap-6">
+<<<<<<< HEAD
             <p className="text-muted-foreground text-base">
               © 2026 Keziah Santos. {lang === "pt" ? "Todos os direitos reservados." : "All rights reserved."}
             </p>
@@ -3024,6 +3025,16 @@ function PortfolioApp({ onAdminClick, cmsCases, onViewCMSCase, experienceItems, 
               <a href="https://www.linkedin.com/in/keziahsantos" target="_blank" rel="noopener noreferrer" className="text-muted-foreground hover:text-accent transition-colors text-base">LinkedIn</a>
               <button onClick={onAdminClick} title="Admin" className="text-muted-foreground/20 hover:text-muted-foreground/60 transition-colors p-1 rounded">
                 <Lock size={12} />
+=======
+            <p className="text-muted-foreground">
+              © 2026 Keziah Santos. {lang === "pt" ? "Todos os direitos reservados." : "All rights reserved."}
+            </p>
+            <div className="flex gap-6 items-center">
+              <a href="mailto:keziahcosta@gmail.com" className="text-muted-foreground hover:text-accent transition-colors">Email</a>
+              <a href="https://www.linkedin.com/in/keziahsantos" target="_blank" rel="noopener noreferrer" className="text-muted-foreground hover:text-accent transition-colors">LinkedIn</a>
+              <button onClick={onAdminClick} className="text-muted-foreground/40 hover:text-muted-foreground text-xs transition-colors">
+                admin
+>>>>>>> 685d931351716fe5c007a93328cec9c978e4a597
               </button>
             </div>
           </div>
@@ -3036,8 +3047,12 @@ function PortfolioApp({ onAdminClick, cmsCases, onViewCMSCase, experienceItems, 
 // ─── Root ─────────────────────────────────────────────────────────────────────
 
 export default function App() {
+<<<<<<< HEAD
   const initialMode: AppMode = window.location.hash === "#admin" ? "adminLogin" : "portfolio";
   const [mode, setMode] = useState<AppMode>(initialMode);
+=======
+  const [mode, setMode] = useState<AppMode>("portfolio");
+>>>>>>> 685d931351716fe5c007a93328cec9c978e4a597
   const [isAdmin, setIsAdmin] = useState(false);
   const [cmsCases, setCmsCases] = useState<CMSCase[]>(loadCases);
   const [experienceItems, setExperienceItems] = useState<ExperienceItem[]>(loadExperience);
@@ -3054,6 +3069,7 @@ export default function App() {
   const handleRecommendationsChange = useCallback((r: Recommendation[]) => { setRecommendations(r); saveRecommendations(r); }, []);
   const handleTalksChange = useCallback((t: TalksSection) => { setTalksSection(t); saveTalks(t); }, []);
 
+<<<<<<< HEAD
   useEffect(() => {
     const onHash = () => {
       if (window.location.hash === "#admin") setMode("adminLogin");
@@ -3064,6 +3080,10 @@ export default function App() {
 
   const handleLogin = () => { setIsAdmin(true); setMode("admin"); window.history.replaceState(null, "", " "); toast.success("Bem-vinda, Keziah!"); };
   const handleLogout = () => { setIsAdmin(false); setMode("portfolio"); window.history.replaceState(null, "", " "); toast("Sessão encerrada"); };
+=======
+  const handleLogin = () => { setIsAdmin(true); setMode("admin"); toast.success("Bem-vinda, Keziah!"); };
+  const handleLogout = () => { setIsAdmin(false); setMode("portfolio"); toast("Sessão encerrada"); };
+>>>>>>> 685d931351716fe5c007a93328cec9c978e4a597
 
   const handleViewCMSCase = (id: string) => {
     const c = cmsCases.find(x => x.id === id);

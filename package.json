@@ -73,6 +73,7 @@
   "peerDependencies": {
     "react": "18.3.1",
     "react-dom": "18.3.1"
+<<<<<<< HEAD
   },
   "peerDependenciesMeta": {
     "react": {
@@ -86,5 +87,7 @@
     "overrides": {
       "vite": "6.3.5"
     }
+=======
+>>>>>>> 685d931351716fe5c007a93328cec9c978e4a597
   }
 }
