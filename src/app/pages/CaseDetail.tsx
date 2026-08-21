@@ -1,6 +1,6 @@
 import { motion } from "motion/react";
 import { Tag } from "../components/ui/Tag";
-import { Button } from "../components/ui/Button";
+import { Button } from "../components/ui/button";
 import { ArrowLeft } from "lucide-react";
 import { useLanguage } from "../context/LanguageContext";
 import { portfolioData } from "../data/portfolio";
