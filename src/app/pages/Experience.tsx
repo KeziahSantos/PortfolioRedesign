@@ -27,13 +27,8 @@ export function Experience({ items }: ExperienceProps) {
           title={lang === "pt" ? "Experiência Profissional" : "Professional Experience"}
           description={
             lang === "pt"
-<<<<<<< HEAD
-              ? "Mais de 20 anos criando produtos digitais que fazem a diferença."
-              : "Over 20 years creating digital products that make a difference."
-=======
-              ? "Mais de 8 anos criando produtos digitais que fazem a diferença."
-              : "Over 8 years creating digital products that make a difference."
->>>>>>> 685d931351716fe5c007a93328cec9c978e4a597
+  ? "Mais de 20 anos criando produtos digitais que fazem a diferença."
+  : "Over 20 years creating digital products that make a difference."
           }
         />
 

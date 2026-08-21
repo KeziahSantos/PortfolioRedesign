@@ -6,3 +6,5 @@ node_modules/
 dist/
 .env
 >>>>>>> 685d931351716fe5c007a93328cec9c978e4a597
+.vercel
+.env*
