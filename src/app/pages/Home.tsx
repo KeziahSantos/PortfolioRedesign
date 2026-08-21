@@ -1,7 +1,7 @@
 import { motion } from "motion/react";
 import { ProjectCard } from "../components/ui/ProjectCard";
 import { SectionHeader } from "../components/ui/SectionHeader";
-import { Button } from "../components/ui/Button";
+import { Button } from "../components/ui/button";
 import { useLanguage } from "../context/LanguageContext";
 import { portfolioData } from "../data/portfolio";
 
