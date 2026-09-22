@@ -69,25 +69,6 @@ export function Navbar({ currentLang, onLanguageChange, onNavigate, showTalks = 
             </div>
 
             <div className="flex items-center gap-4">
-              {/* Language toggle */}
-
-              <div className="flex items-center gap-1 bg-[#F3F3F1] rounded-lg p-1">
-                {(["pt", "en"] as const).map(l => (
-                  <button
-                    key={l}
-                    onClick={() => onLanguageChange(l)}
-                    className={`px-3 py-1 rounded-md transition-all text-sm font-medium ${
-                      currentLang === l
-                        ? "bg-white text-foreground shadow-sm"
-                        : "text-muted-foreground hover:text-foreground"
-                    }`}
-                  >
-                    {l.toUpperCase()}
-                  </button>
-                ))}
-              </div>
-
-
               <button
                 onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
                 className="md:hidden p-2 text-muted-foreground hover:text-foreground transition-colors"

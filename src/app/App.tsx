@@ -1173,7 +1173,6 @@ function CaseEditor({ item, onSave, onCancel, isNew, apiKey }: { item?: CMSCase;
           </CmsBadge>
         </div>
         <div className="flex items-center gap-2">
-          <TranslateButton onClick={handleTranslateAll} loading={translating} />
           <button onClick={() => handleSave("draft")} className="flex items-center gap-2 text-sm text-muted-foreground hover:text-foreground border border-border hover:border-foreground px-4 py-2 rounded-lg transition-all">
             <Save size={13} /> Salvar rascunho
           </button>
@@ -1295,24 +1294,6 @@ function CaseEditor({ item, onSave, onCancel, isNew, apiKey }: { item?: CMSCase;
                 minHeight={280}
               />
             </div>
-            <div>
-              <label className="block text-sm font-medium text-foreground mb-1.5 flex items-center gap-2">
-                Corpo do case (EN) <Globe size={12} className="text-muted-foreground" />
-              </label>
-              <RichTextEditor
-                value={form.contentEn || ""}
-                onChange={v => upd("contentEn", v)}
-                placeholder="English version — use the Traduzir para EN button above or edit manually…"
-                minHeight={200}
-              />
-            </div>
-            <div>
-              <label className="block text-sm font-medium text-foreground mb-1.5 flex items-center gap-2">
-                Descrição (EN) <Globe size={12} className="text-muted-foreground" />
-              </label>
-              <textarea value={form.descriptionEn || ""} onChange={e => upd("descriptionEn", e.target.value)} rows={3} placeholder="English overview…" className="w-full px-4 py-2.5 rounded-xl border border-border bg-input-background text-foreground text-sm focus:outline-none focus:ring-2 focus:ring-ring/20 resize-none" />
-            </div>
-
             <div>
               <label className="block text-sm font-medium text-foreground mb-2">Resultados / Impacto</label>
               <div className="space-y-2 mb-2">
@@ -1811,10 +1792,6 @@ function TalksEditor({ section, onSave, onClose, apiKey = "" }: {
               <p className="text-xs text-muted-foreground">{t.event}{t.location ? ` · ${t.location}` : ""}{t.date ? ` · ${t.date}` : ""}</p>
             </div>
             <div className="flex items-center gap-0.5 opacity-0 group-hover:opacity-100 transition-opacity shrink-0">
-              <button onClick={() => handleTranslateTalk(t)} title="Traduzir EN" disabled={translatingId === t.id}
-                className="p-1.5 rounded-md text-muted-foreground hover:text-foreground hover:bg-muted transition-colors disabled:opacity-40">
-                <Globe size={14} />
-              </button>
               <button onClick={() => openEdit(t)} className="p-1.5 rounded-md text-muted-foreground hover:text-foreground hover:bg-muted transition-colors"><Edit2 size={14} /></button>
               <button onClick={() => del(t.id)} className="p-1.5 rounded-md text-muted-foreground hover:text-red-500 hover:bg-red-50 transition-colors"><Trash2 size={14} /></button>
             </div>
@@ -1936,7 +1913,6 @@ function AboutEditor({ content, onSave, onClose, apiKey = "" }: {
           <span className="text-sm font-medium text-foreground">Sobre Mim — About</span>
         </div>
         <div className="flex items-center gap-2">
-          <TranslateButton onClick={handleTranslateAbout} loading={translatingAbout} label="Traduzir Bio EN" />
           <button onClick={handleSave} className="flex items-center gap-2 bg-foreground text-background px-4 py-2 rounded-xl text-sm font-medium hover:opacity-90 transition-opacity">
             <Save size={13} /> Salvar tudo
           </button>
@@ -2517,7 +2493,7 @@ function AdminDashboard({ cases, onCasesChange, experience, onExperienceChange, 
             className={`w-full flex items-center gap-2.5 px-3 py-2 rounded-lg text-sm transition-colors ${active === item.id ? "bg-white/10 text-white" : "text-white/50 hover:text-white hover:bg-white/5"}`}>
             <item.icon size={14} />
             <span className="flex-1 text-left">{item.label}</span>
-            {item.badge && <EyeOff size={11} className="opacity-60" title="Oculto no portfólio" />}
+            {item.badge && <EyeOff size={11} className="opacity-60" aria-label="Oculto no portfólio" />}
           </button>
         ))}
       </nav>
@@ -3020,8 +2996,6 @@ function PortfolioApp({ onAdminClick, cmsCases, onViewCMSCase, experienceItems, 
               © 2026 Keziah Santos. {lang === "pt" ? "Todos os direitos reservados." : "All rights reserved."}
             </p>
             <div className="flex gap-6 items-center">
-              <a href="mailto:keziahcosta@gmail.com" className="text-muted-foreground hover:text-accent transition-colors text-base">Email</a>
-              <a href="https://www.linkedin.com/in/keziahsantos" target="_blank" rel="noopener noreferrer" className="text-muted-foreground hover:text-accent transition-colors text-base">LinkedIn</a>
               <button onClick={onAdminClick} title="Admin" className="text-muted-foreground/20 hover:text-muted-foreground/60 transition-colors p-1 rounded">
                 <Lock size={12} />
               </button>
@@ -3035,6 +3009,7 @@ function PortfolioApp({ onAdminClick, cmsCases, onViewCMSCase, experienceItems, 
 
 export default function App() {
   const initialMode: AppMode = window.location.hash === "#admin" ? "adminLogin" : "portfolio";
+  const [mode, setMode] = useState<AppMode>(initialMode);
   const [isAdmin, setIsAdmin] = useState(false);
   const [cmsCases, setCmsCases] = useState<CMSCase[]>(loadCases);
   const [experienceItems, setExperienceItems] = useState<ExperienceItem[]>(loadExperience);
