@@ -54,7 +54,7 @@ export function ProjectCard({
           <span>Ver mais</span>
           <ArrowRight className="w-5 h-5" />
         </div>
-          <ArrowRight className="w-5 h-5" />
+        
         </div>
       </div>
     </motion.div>

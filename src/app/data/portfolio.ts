@@ -2,7 +2,7 @@ export const portfolioData = {
   pt: {
     hero: {
       title: "Projetando produtos digitais de alto impacto com clareza e estratégia.",
-      subtitle: "Senior Product Designer especializada em UX/UI e experiência de produtos digitais.",
+      subtitle: "Sênior Product Designer especializada em UX/UI, Product Discovery e IA aplicada ao Design.",
       cta: {
         primary: "Ver Projetos",
         secondary: "Entrar em Contato"
@@ -43,63 +43,64 @@ export const portfolioData = {
       {
         id: "bids",
         title: "BIDS - Boletim Integrado de Defesa Social",
-        description: "Redesign completo do sistema de registro de boletins de ocorrência para cidadãos e policiais, reduzindo barreiras de acesso e aumentando a eficiência do processo.",
-        tags: ["Governo", "UX Research", "Service Design"],
+        description: "Redesign completo do serviço de registro de ocorrências para a população e para os servidores policiais, reduzindo barreiras de acesso e ampliando a eficiência do processo.",
+        tags: ["Governo", "UX Research", "Service Design", "Acessibilidade"],
         category: "Government",
         nda: false,
         hero: {
           title: "BIDS - Boletim Integrado de Defesa Social",
-          subtitle: "Transformando o registro de ocorrências policiais em Pernambuco",
-          client: "Secretaria de Defesa Social - Governo de Pernambuco",
-          role: "Lead Product Designer",
-          year: "2022-2023"
+          subtitle: "Reduzindo as barreiras de acesso e levando mais segurança para os pernambucanos",
+          client: "Policia Civil - Governo de Pernambuco",
+          role: "Product Designer",
+          year: "2025 - 2026"
         },
         context: {
           title: "Contexto",
-          description: "Os cidadãos e policiais enfrentavam barreiras significativas ao registrar boletins de ocorrência. O processo era moroso, fragmentado e gerava retrabalho. O desafio era: como transformar a experiência de registro para ambas as populações, reduzindo barreiras e melhorando a eficiência?"
+          description: "Cidadãos e servidores policiais enfrentavam dificuldades no registro de ocorrências: acesso limitado, processo fragmentado, retrabalho e baixa confiabilidade nos dados. O desafio era transformar a experiência de registro em um fluxo mais simples, seguro e eficiente para ambas as partes."
         },
         challenge: {
           title: "O Desafio",
-          description: "Criar um sistema integrado que atendesse às necessidades distintas de cidadãos (acesso simples e rápido) e policiais (workflow eficiente e dados confiáveis), enquanto garantia a segurança e integridade das informações."
+          description: "Como transformar a experiência do registro de ocorrências para a população e para os servidores policiais, reduzindo as barreiras de acesso e melhorando a eficiência do processo?"
         },
         process: {
           title: "Processo",
           steps: [
             {
-              name: "Research",
-              description: "Realizamos 100+ pesquisas com policiais e 20 entrevistas com cidadãos (18-55 anos). Analisamos 4 delegacias virtuais em diferentes estados do Brasil."
+              name: "Questionários",
+              description: "Através de questionários, levantamos dados quantitativos de mais de 100 servidores da Polícia Civil e 20 cidadãos de 18 a 55 anos, com diferentes níveis de letramento digital."
             },
             {
-              name: "Discovery",
-              description: "Mapeamos as principais dores: acesso limitado, falta de feedback, retrabalho e dados inconsistentes. Priorizamos soluções com base em impacto e viabilidade."
+              name: "Entrevistas",
+              description: "Entrevistas em profundidade nos ajudaram a compreender as dores dos policiais e as principais oportunidades de melhoria para o redesign do serviço."
             },
             {
-              name: "Ideation",
-              description: "Co-criação com stakeholders para definir três interfaces distintas: portal cidadão, sistema policial e dashboards de gestão."
+              name: "Análise Comparativa",
+              description: "Estudamos referências de delegacias virtuais de São Paulo, Rio de Janeiro, Minas Gerais e Ceará para mapear boas práticas e tendências do setor."
             },
             {
-              name: "Validation",
-              description: "Testes de usabilidade com protótipos de alta fidelidade validaram a solução antes do desenvolvimento."
+              name: "Prototipagem",
+              description: "Criamos protótipos para a visão do cidadão, da polícia e da Delegacia Interativa para validar o fluxo antes do desenvolvimento."
             }
           ]
         },
         solution: {
           title: "Solução",
-          description: "Criamos o BIDS - um sistema integrado com:",
+          description: "Criamos o BIDS — um sistema integrado que reduz retrabalho, aumenta a confiabilidade das estatísticas e contribui para uma gestão mais eficiente da segurança pública.",
           features: [
-            "Portal do Cidadão: registro online com autenticação gov.br",
-            "Sistema Policial: workflow otimizado com dashboards e filtros",
-            "Interface Interativa: atualização das delegacias presenciais",
-            "Integração de Dados: redução de retrabalho e maior confiabilidade estatística"
+            "Portal do cidadão com registro online e autenticação gov.br",
+            "Sistema interno policial com fluxo padronizado, relatórios e filtros",
+            "Nova aba de relatórios com verificações de status e acompanhamento",
+            "Interface renovada para a Delegacia Interativa",
+            "Integração de dados para reduzir retrabalho e melhorar a confiabilidade estatística"
           ]
         },
         impact: {
           title: "Impacto",
           results: [
-            "Registro mais rápido e acessível para cidadãos",
-            "Workflows policiais padronizados e eficientes",
+            "Registro mais rápido e acessível para os cidadãos",
+            "Workflow policial mais padronizado e eficiente",
             "Dados de segurança pública mais confiáveis",
-            "Redução significativa de retrabalho"
+            "Redução significativa de retrabalho e aumento da produtividade"
           ]
         }
       },
@@ -398,63 +399,64 @@ export const portfolioData = {
       {
         id: "bids",
         title: "BIDS - Integrated Public Safety Report",
-        description: "Complete redesign of the police report registration system for citizens and police officers, reducing access barriers and increasing process efficiency.",
-        tags: ["Government", "UX Research", "Service Design"],
+        description: "Complete redesign of the public safety report process for citizens and police officers, reducing access barriers and improving operational efficiency.",
+        tags: ["Government", "UX Research", "Service Design", "Accessibility"],
         category: "Government",
         nda: false,
         hero: {
           title: "BIDS - Integrated Public Safety Report",
-          subtitle: "Transforming police reporting in Pernambuco",
+          subtitle: "Reducing access barriers and bringing more safety to Pernambuco",
           client: "Public Safety Secretariat - Pernambuco Government",
           role: "Lead Product Designer",
           year: "2022-2023"
         },
         context: {
           title: "Context",
-          description: "Citizens and police officers faced significant barriers when filing police reports. The process was slow, fragmented, and generated rework. The challenge was: how can we transform the registration experience for both populations, reducing barriers and improving efficiency?"
+          description: "Citizens and police officers faced significant barriers when filing public safety reports. The process was slow, fragmented, and prone to rework. The challenge was to transform the reporting experience into a simpler, safer, and more efficient journey for everyone involved."
         },
         challenge: {
           title: "The Challenge",
-          description: "Create an integrated system that met the distinct needs of citizens (simple and fast access) and police officers (efficient workflow and reliable data), while ensuring information security and integrity."
+          description: "How can we transform the reporting experience for the population and police officers, reducing access barriers and improving process efficiency?"
         },
         process: {
           title: "Process",
           steps: [
             {
-              name: "Research",
-              description: "We conducted 100+ surveys with police officers and 20 interviews with citizens (ages 18-55). Analyzed virtual police stations in 4 different Brazilian states."
+              name: "Questionnaires",
+              description: "We collected quantitative data from more than 100 police officers and 20 citizens aged 18 to 55 with different levels of digital literacy."
             },
             {
-              name: "Discovery",
-              description: "Mapped key pain points: limited access, lack of feedback, rework, and inconsistent data. Prioritized solutions based on impact and feasibility."
+              name: "Interviews",
+              description: "In-depth interviews revealed police pain points and highlighted opportunities to improve the redesign of the service."
             },
             {
-              name: "Ideation",
-              description: "Co-creation with stakeholders to define three distinct interfaces: citizen portal, police system, and management dashboards."
+              name: "Comparative Analysis",
+              description: "We reviewed virtual precinct models from São Paulo, Rio de Janeiro, Minas Gerais, and Ceará to identify best practices."
             },
             {
-              name: "Validation",
-              description: "Usability testing with high-fidelity prototypes validated the solution before development."
+              name: "Prototyping",
+              description: "We created prototypes for the citizen view, police view, and the Interactive Delegacy to validate the flow before development."
             }
           ]
         },
         solution: {
           title: "Solution",
-          description: "We created BIDS - an integrated system with:",
+          description: "We created BIDS — an integrated system that reduces rework, improves statistical reliability, and supports more efficient public safety management.",
           features: [
-            "Citizen Portal: online registration with gov.br authentication",
-            "Police System: optimized workflow with dashboards and filters",
-            "Interactive Interface: updated in-person precinct systems",
-            "Data Integration: reduced rework and improved statistical reliability"
+            "Citizen portal with online registration and gov.br authentication",
+            "Internal police system with standardized workflow, reports, and filters",
+            "New reporting tab with status checks and monitoring",
+            "Renewed Interactive Delegacy interface",
+            "Integrated data flow to reduce rework and increase data reliability"
           ]
         },
         impact: {
           title: "Impact",
           results: [
-            "Faster and more accessible registration for citizens",
-            "Standardized and efficient police workflows",
+            "Faster and more accessible report registration for citizens",
+            "More standardized and efficient police workflow",
             "More reliable public safety data",
-            "Significant reduction in rework"
+            "Significant reduction in rework and increased productivity"
           ]
         }
       },

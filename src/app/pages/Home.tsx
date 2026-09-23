@@ -69,7 +69,7 @@ export function Home({ onNavigate, extraProjects = [], heroTitle, heroSubtitle, 
           <div className="max-w-7xl mx-auto">
             <SectionHeader
               eyebrow={lang === "pt" ? "Projetos em destaque" : "Featured work"}
-              title={lang === "pt" ? "Casos selecionados" : "Selected cases"}
+              title={lang === "pt" ? "Cases selecionados" : "Selected cases"}
               description={
                 lang === "pt"
                   ? "Projetos que demonstram minha abordagem estratégica e execução em design de produto."
