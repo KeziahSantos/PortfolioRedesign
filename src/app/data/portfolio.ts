@@ -11,23 +11,32 @@ export const portfolioData = {
     about: {
       title: "Sobre Mim",
       bio: [
-        "Sou uma Senior Product Designer com mais de 8 anos de experiência criando produtos digitais que fazem a diferença. Especialista em Interaction Design pela CESAR School, tenho paixão por transformar problemas complexos em soluções elegantes e centradas no usuário.",
+        "Sênior Product Designer com mais de 20 anos de experiência em Design Digital e atuação também em Product Ownership. Experiência end-to-end em Discovery, UX Research, Product Discovery, arquitetura da informação, jornadas, fluxos, wireframes, prototipação, UI, Design Systems, acessibilidade e testes de usabilidade. Desde a Samsung, exerço responsabilidades relacionadas a PO, conectando usuário, negócio e tecnologia; atualmente também atuo nessa frente em projetos de transformação digital no Governo de Pernambuco. Especialista em Design de Interação para Artefatos Digitais pelo CESAR School e com formação recente em IA para Design.",
         "Minha abordagem combina pensamento estratégico de produto com excelência em design visual. Trabalho end-to-end, desde a descoberta e pesquisa até a entrega final e medição de impacto.",
         "Colaborei com times de produto em grandes empresas e projetos governamentais, sempre focada em criar experiências que realmente importam para as pessoas."
       ],
       differentials: [
-        "Visão estratégica de produto aliada a execução impecável",
-        "Experiência com projetos de alto impacto em governo e grandes empresas",
-        "Atuação end-to-end em todo o ciclo de vida do produto",
-        "Liderança em pesquisa, discovery e validação de soluções"
+        "20+ anos transformando problemas complexos em experiências digitais",
+        "Visão estratégica de produto + execução hands-on",
+        "Discovery, Research e Design orientados por evidências",
+        "Experiência end-to-end, do problema ao produto",
+        "Conexão entre usuário, negócio e tecnologia",
+        "Experiência em governo, grandes empresas e produtos de alta complexidade",
+        "Product Design + responsabilidades de Product Owner",
+        "Design Systems, acessibilidade e qualidade de experiência",
+        "IA aplicada a Discovery, ideação e prototipação"
       ],
       skills: [
-        { name: "UX Research", description: "Entrevistas, surveys, testes de usabilidade e análise de dados" },
-        { name: "UI Design", description: "Design visual, design systems e prototipação" },
-        { name: "Product Thinking", description: "Estratégia de produto, roadmap e priorização" },
-        { name: "Prototyping", description: "Figma, Adobe XD, Sketch e ferramentas de prototipação" },
-        { name: "Design Systems", description: "Criação e manutenção de sistemas de design escaláveis" },
-        { name: "User Testing", description: "Planejamento e execução de testes com usuários" }
+        { name: "Product Discovery", description: "Identificação e definição de problemas, mapeamento de oportunidades, jornadas, hipóteses e construção de soluções a partir das necessidades dos usuários." },
+        { name: "UX Research", description: "Entrevistas, pesquisas, mapeamento de dores, análise de necessidades e testes de usabilidade para gerar insights e apoiar decisões de produto." },
+        { name: "Product Thinking", description: "Conexão entre usuário, negócio e tecnologia, transformando necessidades em estratégias, requisitos e soluções viáveis." },
+        { name: "Product Ownership", description: "Refinamento de necessidades, definição de requisitos, priorização, alinhamento com stakeholders e acompanhamento da evolução das entregas." },
+        { name: "UX/UI Design", description: "Criação de experiências e interfaces digitais, desde arquitetura da informação e fluxos até wireframes, protótipos e interfaces de alta fidelidade." },
+        { name: "Design Systems", description: "Criação, aplicação e evolução de sistemas de design para garantir consistência, escalabilidade, eficiência e qualidade nas experiências digitais." },
+        { name: "Prototyping", description: "Criação de wireframes, fluxos e protótipos de baixa a alta fidelidade utilizando Figma, Figma Make, Figma AI, Adobe XD e Sketch." },
+        { name: "Usability Testing", description: "Planejamento e execução de testes com usuários para validar soluções, identificar problemas de usabilidade e orientar melhorias." },
+        { name: "Accessibility", description: "Aplicação de princípios de acessibilidade, usabilidade e WCAG na construção de produtos digitais mais inclusivos." },
+        { name: "AI for Design", description: "Uso de IA e ferramentas como ChatGPT, Gemini, Figma AI, Figma Make e Google Stitch para apoiar Discovery, ideação, prototipação e documentação." }
       ]
     },
     projects: [
@@ -289,51 +298,60 @@ export const portfolioData = {
     ],
     experience: [
       {
+        id: "exp-001",
+        role: "Senior Product Designer | Product Owner",
+        company: "Join Creative Tech · Projetos para o Governo de Pernambuco",
+        period: "2025 – atual",
+        current: true,
+        description: [
+          "Atuo no desenvolvimento e evolução de produtos e serviços digitais para cidadãos e servidores",
+          "Conduzo Discovery, UX Research, definição de problemas, jornadas, fluxos e arquitetura da informação",
+          "Desenvolvo wireframes, protótipos e interfaces, aplicando Design System, acessibilidade e usabilidade",
+          "Exerço responsabilidades de Product Owner, conectando usuários, stakeholders, negócio e tecnologia",
+          "Participo da definição e priorização de requisitos e acompanho a evolução das entregas",
+          "Utilizo IA e ferramentas como Figma Make, Figma AI, Google Stitch, ChatGPT e Gemini no processo de Design"
+        ]
+      },
+      {
+        id: "exp-002",
         role: "Senior Product Designer",
         company: "Samsung Electronics",
         period: "2020 - 2023",
         current: false,
         description: [
-          "Liderei o design de produtos mobile para plataformas corporativas",
-          "Criei e mantive design system usado por múltiplos times",
-          "Colaborei com times globais em projetos de alto impacto",
-          "Conduzi pesquisas de UX e testes de usabilidade em larga escala"
+          "Atuei no desenvolvimento de produtos digitais, conectando necessidades dos usuários, objetivos de negócio e tecnologia",
+          "Exerci responsabilidades de Product Owner, participando do levantamento e priorização de necessidades, requisitos e entregas",
+          "Conduzi Discovery, pesquisas, mapeamento de dores, jornadas e identificação de oportunidades",
+          "Desenvolvi wireframes, protótipos e interfaces de alta fidelidade",
+          "Trabalhei em parceria com Desenvolvimento e QA, garantindo qualidade e viabilidade das soluções",
+          "Atuei em equipes multidisciplinares e contribuí para a formação de designers por meio de mentoria e onboarding"
         ]
       },
       {
-        role: "Product Designer",
-        company: "Secretaria de Defesa Social - Governo de Pernambuco",
-        period: "2022 - 2023",
-        current: false,
-        description: [
-          "Liderei o redesign do sistema BIDS de boletins de ocorrência",
-          "Realizei pesquisas com 100+ policiais e 20 cidadãos",
-          "Colaborei com equipes multidisciplinares (dev, PM, stakeholders)",
-          "Entreguei solução que melhorou significativamente a eficiência operacional"
-        ]
-      },
-      {
+        id: "exp-003",
         role: "UX/UI Designer",
         company: "Facilit Tecnologia",
         period: "2018 - 2020",
         current: false,
         description: [
-          "Desenvolvi produtos digitais para clientes do setor financeiro e varejo",
-          "Criei protótipos de alta fidelidade e conduzi testes de usabilidade",
-          "Trabalhei em metodologias ágeis com times de desenvolvimento",
-          "Contribuí para a criação de processos de design da empresa"
+          "Atuei no produto Target, plataforma de governança para planejamento estratégico, gestão de projetos e indicadores",
+          "Conduzi pesquisas, mapeamento de problemas, cenários e jornadas",
+          "Desenvolvi wireframes e protótipos e participei de testes com usuários",
+          "Trabalhei de forma colaborativa com Design, Desenvolvimento e QA",
+          "Participei de projeto para licitação governamental do Ministério Público"
         ]
       },
       {
+        id: "exp-004",
         role: "Designer",
         company: "Diário de Pernambuco",
         period: "2016 - 2018",
         current: false,
         description: [
-          "Design editorial digital e impresso",
-          "Criação de interfaces para produtos digitais do jornal",
-          "Colaboração com equipe de conteúdo e jornalismo",
-          "Otimização de experiência de leitura em plataformas digitais"
+          "Atuei na pesquisa e evolução de produtos digitais para web, mobile, TV e rádio",
+          "Criei jornadas, wireframes, protótipos de baixa e alta fidelidade e interfaces digitais",
+          "Orientei outros designers e colaborei em projetos multidisciplinares",
+          "Participei de projetos reconhecidos em festivais de Design Digital no Brasil"
         ]
       }
     ],

@@ -2,6 +2,7 @@ import { useState, useEffect, useCallback, useRef } from "react";
 import { motion } from "motion/react";
 import { Toaster, toast } from "sonner";
 import { LanguageProvider, useLanguage } from "./context/LanguageContext";
+import { portfolioData } from "./data/portfolio";
 import { Navbar } from "./components/ui/Navbar";
 import { Home } from "./pages/Home";
 import { About } from "./pages/About";
@@ -27,7 +28,7 @@ type Page = "home" | "about" | "work" | "case" | "experience" | "talks" | "conta
 type Status = "draft" | "published";
 type CaseCategory = "Product Design" | "UX Research" | "Design Systems" | "Visual Design" | "Mobile" | "Web";
 type ViewMode = "grid" | "list";
-type AppMode = "portfolio" | "adminLogin" | "admin" | "ndaGate" | "caseViewer";
+type AppMode = "portfolio" | "ndaGate" | "caseViewer";
 
 interface HistoryEntry { action: string; date: string; }
 
@@ -64,77 +65,34 @@ interface CMSCase {
 
 const ADMIN_EMAIL = "admin@portfolio.com";
 const ADMIN_PASSWORD = "Design2026!";
-
-const INITIAL_CMS_CASES: CMSCase[] = [
-  {
-    id: "cms-001",
-    title: "Pernambuco Digital Government",
-    subtitle: "Redesigning public services for 9.6 million citizens",
-    description: "Led the end-to-end UX redesign of Pernambuco's state digital platform (SETD), consolidating 40+ legacy services into a unified, accessible experience.",
-    category: "Product Design",
-    tags: ["Government", "Design System", "Accessibility", "WCAG 2.1"],
-    status: "published",
-    isNDA: false,
-    ndaPassword: "",
-    coverColor: "#1A1A1D",
-    coverImage: "https://images.unsplash.com/photo-1551288049-bebda4e38f71?w=800&h=500&fit=crop&auto=format",
-    client: "SETD – Secretaria de Desenvolvimento Econômico",
-    role: "Senior Product Designer (Lead)",
-    year: "2024",
-    duration: "14 months",
-    content: "Extensive audit of 40+ services spread across disconnected portals with inconsistent UX, zero responsive support, and WCAG AA compliance rates below 30%.\n\nWe conducted 68 user interviews across urban and rural Pernambuco, mapping pain points across income levels, digital literacy, and connectivity constraints.\n\nThe resulting Pernambuco Design System (PDS) — 140+ components, full dark/light mode, WCAG AA certified — became the foundation for the next 3 years of state digital infrastructure.",
-    results: [
-      "Task completion rate increased from 34% to 87%",
-      "Support call volume reduced by 52% in 6 months",
-      "WCAG AA compliance achieved across all 40+ services",
-      "System adopted by 6 secretariats within 8 months",
-    ],
-    tools: ["Figma", "FigJam", "Maze", "Hotjar", "Zeroheight"],
-    links: [{ label: "Case Study PDF", url: "#" }],
-    createdAt: "2024-01-15T10:00:00Z",
-    updatedAt: "2024-11-20T14:30:00Z",
-    history: [
-      { action: "Published", date: "2024-11-20T14:30:00Z" },
-      { action: "Created", date: "2024-01-15T10:00:00Z" },
-    ],
-  },
-  {
-    id: "cms-002",
-    title: "Apex Electronics — Galaxy OS",
-    subtitle: "Reimagining the smart device ecosystem UX",
-    description: "Worked embedded with the product team at Apex Electronics to redesign the core OS interaction model across their flagship mobile and tablet lineup.",
-    category: "Mobile",
-    tags: ["Mobile OS", "Interaction Design", "Cross-platform"],
-    status: "published",
-    isNDA: true,
-    ndaPassword: "apex2024",
-    coverColor: "#0B1628",
-    coverImage: "https://images.unsplash.com/photo-1512941937669-90a1b58e7e9c?w=800&h=500&fit=crop&auto=format",
-    client: "Apex Electronics (name changed, NDA)",
-    role: "Product Design Lead",
-    year: "2023",
-    duration: "18 months",
-    content: "Deep collaboration with hardware, software, and marketing teams at one of the world's largest consumer electronics companies.\n\nWe ran 120+ usability sessions across 8 countries, building a cross-cultural interaction model accommodating right-to-left languages, varying screen sizes, and diverse usage patterns.\n\nThe design system we built — codenamed Meridian — shipped with firmware v14 across 12 device SKUs.",
-    results: [
-      "User-rated ease of use score increased 28 NPS points post-launch",
-      "First-week retention improved 19% over previous OS version",
-      "Gesture adoption rate: 73% within 30 days",
-      "Meridian Design System adopted by 3 product teams",
-    ],
-    tools: ["Figma", "ProtoPie", "Principle", "UserTesting", "Lottie"],
-    links: [],
-    createdAt: "2023-03-10T08:00:00Z",
-    updatedAt: "2024-03-01T11:00:00Z",
-    history: [
-      { action: "Published", date: "2024-03-01T11:00:00Z" },
-      { action: "NDA password set", date: "2023-12-10T10:00:00Z" },
-      { action: "Created", date: "2023-03-10T08:00:00Z" },
-    ],
-  },
-];
-
-const CASE_CATEGORIES: CaseCategory[] = ["Product Design", "UX Research", "Design Systems", "Visual Design", "Mobile", "Web"];
 const COVER_COLORS = ["#0B0B0C", "#1A1A1D", "#0B1628", "#1E3A5F", "#1A2E1A", "#2D1B1B", "#1E1E2E", "#2A2A1A"];
+const CASE_CATEGORIES: CaseCategory[] = ["Product Design", "UX Research", "Design Systems", "Visual Design", "Mobile", "Web"];
+
+const INITIAL_CMS_CASES: CMSCase[] = portfolioData.pt.projects.map((project, index) => ({
+  id: project.id,
+  title: project.title,
+  titleEn: project.title,
+  subtitle: project.hero.subtitle,
+  description: project.description,
+  category: "Product Design",
+  tags: project.tags,
+  status: "published",
+  isNDA: project.nda,
+  ndaPassword: project.nda ? "portfolio" : "",
+  coverColor: COVER_COLORS[index % COVER_COLORS.length],
+  coverImage: "",
+  client: project.hero.client,
+  role: project.hero.role,
+  year: project.hero.year,
+  duration: "",
+  content: [project.context.description, project.challenge.description, project.solution.description].join("\n\n"),
+  results: project.impact.results,
+  tools: project.tags,
+  links: [],
+  createdAt: "2024-01-01T00:00:00Z",
+  updatedAt: "2024-01-01T00:00:00Z",
+  history: [{ action: "Published", date: "2024-01-01T00:00:00Z" }],
+}));
 
 // ─── CMS Helpers ──────────────────────────────────────────────────────────────
 
@@ -150,63 +108,18 @@ interface ExperienceItem {
   descriptionEn?: string[];
 }
 
-const INITIAL_EXPERIENCE: ExperienceItem[] = [
-  {
-    id: "exp-001",
-    role: "Senior Product Designer",
-    company: "Samsung Electronics",
-    period: "2020 - 2023",
-    current: false,
-    description: [
-      "Liderei o design de produtos mobile para plataformas corporativas",
-      "Criei e mantive design system usado por múltiplos times",
-      "Colaborei com times globais em projetos de alto impacto",
-      "Conduzi pesquisas de UX e testes de usabilidade em larga escala",
-    ],
-  },
-  {
-    id: "exp-002",
-    role: "Product Designer",
-    company: "Secretaria de Defesa Social - Governo de Pernambuco",
-    period: "2022 - 2023",
-    current: false,
-    description: [
-      "Liderei o redesign do sistema BIDS de boletins de ocorrência",
-      "Realizei pesquisas com 100+ policiais e 20 cidadãos",
-      "Colaborei com equipes multidisciplinares (dev, PM, stakeholders)",
-      "Entreguei solução que melhorou significativamente a eficiência operacional",
-    ],
-  },
-  {
-    id: "exp-003",
-    role: "UX/UI Designer",
-    company: "Facilit Tecnologia",
-    period: "2018 - 2020",
-    current: false,
-    description: [
-      "Desenvolvi produtos digitais para clientes do setor financeiro e varejo",
-      "Criei protótipos de alta fidelidade e conduzi testes de usabilidade",
-      "Trabalhei em metodologias ágeis com times de desenvolvimento",
-      "Contribuí para a criação de processos de design da empresa",
-    ],
-  },
-  {
-    id: "exp-004",
-    role: "Designer",
-    company: "Diário de Pernambuco",
-    period: "2016 - 2018",
-    current: false,
-    description: [
-      "Design editorial digital e impresso",
-      "Criação de interfaces para produtos digitais do jornal",
-      "Colaboração com equipe de conteúdo e jornalismo",
-      "Otimização de experiência de leitura em plataformas digitais",
-    ],
-  },
-];
+const INITIAL_EXPERIENCE: ExperienceItem[] = portfolioData.pt.experience.map((item, index) => ({
+  id: `exp-${String(index + 1).padStart(3, "0")}`,
+  role: item.role,
+  company: item.company,
+  period: item.period,
+  current: item.current,
+  description: item.description,
+  descriptionEn: item.description,
+}));
 
 function loadExperience(): ExperienceItem[] {
-  try { const s = localStorage.getItem("portfolio_experience_v1"); return s ? JSON.parse(s) : INITIAL_EXPERIENCE; } catch { return INITIAL_EXPERIENCE; }
+  return INITIAL_EXPERIENCE;
 }
 function saveExperience(e: ExperienceItem[]) { localStorage.setItem("portfolio_experience_v1", JSON.stringify(e)); }
 
@@ -228,34 +141,20 @@ interface AboutContent {
 }
 
 const INITIAL_ABOUT: AboutContent = {
-  heroTitle: "",
-  heroSubtitle: "",
-  photo: null,
-  cvFile: null,
-  cvFileName: "Keziah_Santos_CV.pdf",
-  bio: [
-    "Sou uma Senior Product Designer com mais de 8 anos de experiência criando produtos digitais que fazem a diferença. Especialista em Interaction Design pela CESAR School, tenho paixão por transformar problemas complexos em soluções elegantes e centradas no usuário.",
-    "Minha abordagem combina pensamento estratégico de produto com excelência em design visual. Trabalho end-to-end, desde a descoberta e pesquisa até a entrega final e medição de impacto.",
-    "Colaborei com times de produto em grandes empresas e projetos governamentais, sempre focada em criar experiências que realmente importam para as pessoas.",
-  ],
-  differentials: [
-    "Visão estratégica de produto aliada a execução impecável",
-    "Experiência com projetos de alto impacto em governo e grandes empresas",
-    "Atuação end-to-end em todo o ciclo de vida do produto",
-    "Liderança em pesquisa, discovery e validação de soluções",
-  ],
-  skills: [
-    { name: "UX Research", description: "Entrevistas, surveys, testes de usabilidade e análise de dados" },
-    { name: "UI Design", description: "Design visual, design systems e prototipação" },
-    { name: "Product Thinking", description: "Estratégia de produto, roadmap e priorização" },
-    { name: "Prototyping", description: "Figma, Adobe XD, Sketch e ferramentas de prototipação" },
-    { name: "Design Systems", description: "Criação e manutenção de sistemas de design escaláveis" },
-    { name: "User Testing", description: "Planejamento e execução de testes com usuários" },
-  ],
+  heroTitle: portfolioData.pt.hero.title,
+  heroSubtitle: portfolioData.pt.hero.subtitle,
+  photo: "/1787863362846.png",
+  cvFile: "/KeziahSantos_IA26.pdf",
+  cvFileName: "KeziahSantos_IA26.pdf",
+  bio: portfolioData.pt.about.bio,
+  bioEn: portfolioData.en.about.bio,
+  differentials: portfolioData.pt.about.differentials,
+  differentialsEn: portfolioData.en.about.differentials,
+  skills: portfolioData.pt.about.skills,
 };
 
 function loadAbout(): AboutContent {
-  try { const s = localStorage.getItem("portfolio_about_v1"); return s ? JSON.parse(s) : INITIAL_ABOUT; } catch { return INITIAL_ABOUT; }
+  return INITIAL_ABOUT;
 }
 function saveAbout(a: AboutContent) { localStorage.setItem("portfolio_about_v1", JSON.stringify(a)); }
 
@@ -274,39 +173,129 @@ interface Recommendation {
 
 const INITIAL_RECOMMENDATIONS: Recommendation[] = [
   {
-    id: "rec-001",
-    name: "Carlos Mendes",
-    role: "Head of Product",
-    company: "SETD – Governo de Pernambuco",
-    relationship: "Carlos gerenciou Keziah diretamente",
-    date: "Novembro de 2024",
-    text: "Keziah é uma das profissionais mais completas com quem já trabalhei. Sua capacidade de traduzir necessidades complexas de governo em experiências simples e acessíveis é rara. Liderou o redesign de toda nossa plataforma digital com maestria técnica e sensibilidade humana. O resultado foi um aumento expressivo na adoção dos serviços e redução significativa nas chamadas de suporte.",
-    photo: null,
+    id: "rec-004",
+    name: "Wesley Souza",
+    role: "Software engineer | React | Next JS | Android | Kotlin | Python | Computer Vision Specialist",
+    company: "FCx Labs",
+    relationship: "Wesley trabalhou na mesma equipe que Keziah",
+    date: "Dezembro de 2024",
+    text: "Tive o prazer de trabalhar com Keziah, e durante esse tempo, ela sempre demonstrou uma base sólida de conhecimentos em design e experiência do usuário. Sua habilidade em transformar requisitos de negócios em soluções elegantes e funcionais é impressionante, conseguindo equilibrar com maestria funcionalidade, viabilidade, necessidades do cliente e a experiência do usuário. Keziah adota uma abordagem colaborativa e trabalha de forma eficaz com equipes multidisciplinares, como desenvolvedores e gerentes de produto. Ela sempre mantém o foco em entregar uma excelente experiência de usuário, garantindo que os aspectos de design e usabilidade sejam contemplados. Além disso, suas escolhas são sempre bem fundamentadas e explicadas de maneira clara para todos os membros do time.",
+    photo: "/1718730636268.jpeg",
   },
   {
-    id: "rec-002",
-    name: "Ana Luiza Ferreira",
-    role: "Product Manager",
-    company: "Apex Electronics",
-    relationship: "Ana Luiza trabalhou com Keziah no mesmo time",
-    date: "Março de 2024",
-    text: "Trabalhar com a Keziah foi uma das melhores experiências da minha carreira. Ela tem uma visão de produto extraordinária aliada a uma execução impecável em design. Sua habilidade de facilitar workshops, alinhar stakeholders e ainda entregar protótipos de alta fidelidade no mesmo sprint é algo que realmente diferencia seu trabalho.",
-    photo: null,
+    id: "rec-005",
+    name: "Amirton Chagas",
+    role: "Project Manager",
+    company: "CIn Samsung",
+    relationship: "Amirton trabalhou na mesma equipe que Keziah",
+    date: "Dezembro de 2024",
+    text: "Keziah é uma profissional competente, com vasto conhecimento técnico em UX e UI, e sempre disponível para contribuir com a equipe para o desenvolvimento de um produto de qualidade. Durante o período de pouco mais de um ano em que trabalhamos juntos, sempre pude contar com uma excelente qualidade nos artefatos que Keziah produzia para serem usados pela equipe de desenvolvimento. É bastante solícita, e tem uma ótima capacidade de comunicação com todos da equipe dos projetos onde trabalha.",
+    photo: "/1516797906718.jpeg",
   },
   {
-    id: "rec-003",
-    name: "Rafael Torres",
-    role: "Engineering Lead",
-    company: "Facilit Tecnologia",
-    relationship: "Rafael trabalhou com Keziah no mesmo time",
-    date: "Outubro de 2023",
-    text: "Do ponto de vista de engenharia, a Keziah é o tipo de designer que todo time de produto sonha em ter. Ela entende profundamente as restrições técnicas sem perder a ambição de criar experiências excepcionais. Suas especificações são precisas, suas revisões construtivas e sua parceria com o time de dev é exemplar.",
-    photo: null,
+    id: "rec-006",
+    name: "Leonardo Martins",
+    role: "Tech Architecture Manager | Digital Transformation | Cloud, AI & Innovation | Agile Leadership",
+    company: "Accenture Brasil",
+    relationship: "Leonardo supervisionava Keziah diretamente",
+    date: "Dezembro de 2024",
+    text: "Keziah sempre demonstrou ser uma profissional comprometida e engajada, potencializou a visão do usuário para proporcionar uma melhor experiência no uso da solução. Busca constante no aprendizado, facilitou sessões de design de produto, papel fundamental para direcionamento do roadmap de funcionalidades por perfis de usuários. Boa maturidade em desenvolvimento ágil, em especial o Kanban, onde atuava com todos os membros do time para os refinamentos de atividades antes de liberação para o desenvolvimento. Atuou também em mentoria/onboarding para outros designers.",
+    photo: "/1772298251090.png",
+  },
+  {
+    id: "rec-007",
+    name: "Andréa Gomes",
+    role: "Gerente de projetos",
+    company: "CIn/Samsung - UFPE",
+    relationship: "Andréa supervisionava Keziah diretamente",
+    date: "Dezembro de 2024",
+    text: "Keziah possui conhecimento técnico sólido, tanto nas propostas de UX, como em dinâmicas de inception. Comprometida com as entregas, bem como com a qualidade do produto. Disponível para apoiar o time e outros designers mais juniors.",
+    photo: "/1517440086386.jpeg",
+  },
+  {
+    id: "rec-008",
+    name: "Veronica Oliveira",
+    role: "Designer sênior de experiência do usuário | Design system specialist | UX Strategist | Product Designer | IA",
+    company: "200DEV",
+    relationship: "Veronica trabalhou na mesma equipe que Keziah",
+    date: "Dezembro de 2024",
+    text: "Trabalhei com Keziah em duas empresas diferentes e em ambas ela sempre foi uma profissional de excelência, dedicada e resiliente e não se deixa vencer pelas adversidades. Destaca-se pela sua capacidade de resolver problemas, domina as metodologias de Design e possui fortes competências técnicas e uma excelente visão estratégica e de negócio. Adicionalmente, possui qualidades enquanto pessoa, fundamentais em qualquer organização. Destaco a sua força, resiliência, empatia, simpatia e excelente capacidade de comunicação.",
+    photo: "/1747096115640.jpeg",
+  },
+  {
+    id: "rec-009",
+    name: "Eduardo Vasconcelos",
+    role: "Engineering & Systems Leadership | Cloud, DevOps, Agile | PMP",
+    company: "Softplan",
+    relationship: "Eduardo supervisionava Keziah diretamente",
+    date: "Dezembro de 2024",
+    text: "Keziah is a great professional designer focused on product usability and user experience. She is committed to deadlines, quality, and workflows and can listen to and transform requests into products.",
+    photo: "/1760521030820.jpeg",
+  },
+  {
+    id: "rec-010",
+    name: "Theodora Faria",
+    role: "Software Tester | QA | Samsung Electronics | CTFL | Test Automation | Kanban | Scrum",
+    company: "Samsung Electronics",
+    relationship: "Theodora trabalhou na mesma equipe que Keziah",
+    date: "Dezembro de 2024",
+    text: "Trabalhar com a Keziah foi uma ótima experiência! Como designer, ela sempre mostrou uma grande capacidade em entender as necessidades do cliente, e transformá-las na melhor solução possível. Com certeza é uma profissional que agrega muito valor ao time, com suas habilidades técnicas e interpessoais. Vale destacar a facilidade de comunicação que ela tem com os Devs e QAs, trazendo muita eficiência para o processo de desenvolvimento como um todo.",
+    photo: "/1772742261147.png",
+  },
+  {
+    id: "rec-011",
+    name: "Ivo Flavian Ventura",
+    role: "Senior Software Quality Analyst",
+    company: "Instituto de Pesquisas ELDORADO",
+    relationship: "Ivo Flavian trabalhou com Keziah, mas em equipes diferentes",
+    date: "Dezembro de 2024",
+    text: "É com grande satisfação que recomendo Keziah Santos, com quem tive a oportunidade de trabalhar por mais de quatro anos. Durante esse período, ela se destacou como uma profissional excepcional nas áreas de Product Design e Experiência do Usuário (UX), contribuindo significativamente para o sucesso dos projetos em que estivemos envolvidos. Keziah possui uma habilidade notável para transformar necessidades complexas em soluções intuitivas e eficazes. Sua capacidade de escuta ativa, empatia e pesquisa detalhada a permite compreender profundamente os desafios enfrentados, resultando em produtos de alta qualidade que equilibram funcionalidade e estética. Uma de suas principais qualidades é o pensamento estratégico. Keziah tem um talento especial para alinhar os objetivos com as metas do negócio, garantindo que as soluções não apenas atendam às necessidades dos usuários, mas também impulsionem resultados organizacionais. Em resumo, é uma profissional dedicada, talentosa e confiável, que adiciona valor significativo a qualquer equipe ou projeto em que esteja envolvida. Tenho total confiança em sua capacidade de continuar se destacando em sua carreira e recomendo-a sem quaisquer reservas.",
+    photo: "/1630081921054.jpeg",
+  },
+  {
+    id: "rec-012",
+    name: "Kataliny Oliveira",
+    role: "Senior Product Designer | UX/UI | Product Strategy | Design Leadership | Agile | AI",
+    company: "Solar Coca-Cola",
+    relationship: "Kataliny trabalhou com Keziah, mas em equipes diferentes",
+    date: "Junho de 2023",
+    text: "Tive a oportunidade de trabalhar com Keziah na mesma empresa e posso afirmar que é uma profissional super competente e dedicada. Keziah possui um excelente domínio das melhores práticas e processos de UX, e demonstra habilidades valiosas na criação de soluções centradas no usuário. Além disso, sua dedicação, conhecimento e comprometimento com os projetos e nas entregas em que está envolvida são admiráveis. Foi um prazer trabalhar e aprender com ela no dia a dia.",
+    photo: "/1744723631415.jpeg",
+  },
+  {
+    id: "rec-013",
+    name: "Márcia Silva",
+    role: "Senior QA Engineer with 12+ Years of Experience | Test Automation, QA Leadership & AI-Assisted Testing | Fintech & Payments",
+    company: "Trustly",
+    relationship: "Márcia trabalhou na mesma equipe que Keziah",
+    date: "Agosto de 2022",
+    text: "Durante nossos anos de trabalho encontramos alguns profissionais que são notavelmente um diferencial e na área de UX/UI a Keziah foi umas das pessoas com quem pude aprender muito, uma profissional dedicada que tem uma perspectiva ampla por ter também experiência como desenvolvedora frontEnd, o que dá ainda mais profundidade no seu trabalho como Designer, pois além de ser receptiva ao meu ponto de vista como QA ela também consegue falar com o DEV team de uma forma mais próxima, inclusive ajudando na análise de viabilidade técnica.",
+    photo: "/1723075931841.jpeg",
+  },
+  {
+    id: "rec-014",
+    name: "Silvia Morais",
+    role: "Senior Product Designer | UX/UI | Discovery · Delivery · User Stories · Figma | Mercado Financeiro | Fintech | Growth · Big Tech · Óleo & Gás | +10 anos em produtos digitais B2B & B2C",
+    company: "CESAR",
+    relationship: "Silvia trabalhou na mesma equipe que Keziah",
+    date: "Agosto de 2022",
+    text: "Trabalhei com Keziah em um dos maiores jornais do estado de Pernambuco. Com grande entendimento na área e dedicação no que faz. Sempre estudando e procurando melhorar suas skills. Ela tem grande entendimento que vai desde ferramentas, bibliotecas de web|mobile e conceitos de UX. Acho que ela é uma grande soma para qualquer time que ela esteja.",
+    photo: "/1779375240712.jpeg",
+  },
+  {
+    id: "rec-015",
+    name: "Everson Veríssimo da Silva",
+    role: "Backend Software Engineer | MBA em Data Science e Analytics - USP/ESALQ",
+    company: "Microsoft",
+    relationship: "Everson trabalhou na mesma equipe que Keziah",
+    date: "Maio de 2019",
+    text: "Keziah is a highly skilled front-end designer. She gives relevant suggestions and adds great insights to the projects we worked together, I highly recommend her for projects UX-oriented. She's also pretty easy to work with, has a great sense of humor and has a sincere interest to see the success of others for she understands this contributes for the success of the team. I wish her the best for her current project and for the projects to come.",
+    photo: "/1706125051679.jpeg",
   },
 ];
 
 function loadRecommendations(): Recommendation[] {
-  try { const s = localStorage.getItem("portfolio_recs_v1"); return s ? JSON.parse(s) : INITIAL_RECOMMENDATIONS; } catch { return INITIAL_RECOMMENDATIONS; }
+  return INITIAL_RECOMMENDATIONS;
 }
 function saveRecommendations(r: Recommendation[]) { localStorage.setItem("portfolio_recs_v1", JSON.stringify(r)); }
 
@@ -339,45 +328,21 @@ const INITIAL_TALKS: TalksSection = {
   talks: [
     {
       id: "talk-001",
-      title: "Design de Serviços no Setor Público",
-      event: "Gov.Design Summit",
-      type: "Palestra",
-      date: "Outubro 2024",
-      location: "Recife, PE",
-      description: "Como aplicar princípios de Service Design para transformar serviços governamentais em experiências humanas, acessíveis e eficientes. Cases reais do Governo de Pernambuco.",
-      link: "",
-      coverImage: null,
-      tags: ["Service Design", "Governo", "UX"],
-    },
-    {
-      id: "talk-002",
-      title: "Design Systems em Escala: da Teoria à Prática",
-      event: "UX Conf Brasil",
-      type: "Palestra",
-      date: "Junho 2024",
-      location: "Online",
-      description: "Lições aprendidas ao construir e manter um design system adotado por 14 times de produto. Estratégias de adoção, governança e contribuição distribuída.",
-      link: "",
-      coverImage: null,
-      tags: ["Design Systems", "Figma", "Escalabilidade"],
-    },
-    {
-      id: "talk-003",
-      title: "Carreira em Product Design: do Brasil para o Mundo",
-      event: "Mulheres em Tech PE",
+      title: "Empregabilidade em UX Design",
+      event: "IFPE Olinda",
       type: "Conversa",
-      date: "Março 2024",
-      location: "Recife, PE",
-      description: "Bate-papo sobre trajetória profissional, posicionamento para vagas internacionais e como construir um portfólio que atravessa fronteiras.",
-      link: "",
+      date: "Junho 2026",
+      location: "Olinda, PE",
+      description: "Hoje tive a oportunidade de compartilhar um pouco da minha trajetória e falar sobre empregabilidade e mercado de UX com estudantes e saio dessa experiência com o coração cheio. 💜 Acredito muito no poder de dividir conhecimento, principalmente com quem está começando e buscando seu espaço. Ver o interesse, as dúvidas e a vontade de aprender de cada pessoa ali só reforça o quanto essa troca é importante. Quero deixar um agradecimento especial à professora Gilvaneide Gomes pelo convite e pela confiança. Foi um prazer enorme estar com vocês e contribuir, mesmo que um pouquinho, com a jornada de cada estudante. Seguimos construindo, aprendendo e abrindo caminhos juntos. 🚀",
+      link: "https://lnkd.in/p/dqUTa3MB",
       coverImage: null,
-      tags: ["Carreira", "Diversidade", "Internacional"],
+      tags: ["Carreira", "Product Design", "IFPE", "Olinda", "UX Design", "Empregabilidade", "Design De Produto"],
     },
   ],
 };
 
 function loadTalks(): TalksSection {
-  try { const s = localStorage.getItem("portfolio_talks_v1"); return s ? JSON.parse(s) : INITIAL_TALKS; } catch { return INITIAL_TALKS; }
+  return INITIAL_TALKS;
 }
 function saveTalks(t: TalksSection) { localStorage.setItem("portfolio_talks_v1", JSON.stringify(t)); }
 
@@ -388,7 +353,7 @@ function fmtDate(iso: string) {
 }
 function newId() { return `case-${Date.now()}`; }
 function loadCases(): CMSCase[] {
-  try { const s = localStorage.getItem("portfolio_cms_v2"); return s ? JSON.parse(s) : INITIAL_CMS_CASES; } catch { return INITIAL_CMS_CASES; }
+  return INITIAL_CMS_CASES;
 }
 function saveCases(c: CMSCase[]) { localStorage.setItem("portfolio_cms_v2", JSON.stringify(c)); }
 
@@ -2939,8 +2904,7 @@ function TalksPage({ talks }: { talks: Talk[] }) {
 
 // ─── Portfolio Wrapper (original layout) ──────────────────────────────────────
 
-function PortfolioApp({ onAdminClick, cmsCases, onViewCMSCase, experienceItems, aboutContent, recommendations, talksSection }: {
-  onAdminClick: () => void;
+function PortfolioApp({ cmsCases, onViewCMSCase, experienceItems, aboutContent, recommendations, talksSection }: {
   cmsCases: CMSCase[];
   onViewCMSCase: (id: string) => void;
   experienceItems: ExperienceItem[];
@@ -2995,10 +2959,8 @@ function PortfolioApp({ onAdminClick, cmsCases, onViewCMSCase, experienceItems, 
             <p className="text-muted-foreground text-base">
               © 2026 Keziah Santos. {lang === "pt" ? "Todos os direitos reservados." : "All rights reserved."}
             </p>
-            <div className="flex gap-6 items-center">
-              <button onClick={onAdminClick} title="Admin" className="text-muted-foreground/20 hover:text-muted-foreground/60 transition-colors p-1 rounded">
-                <Lock size={12} />
-              </button>
+            <div className="flex gap-6 items-center" aria-hidden="true">
+              <span className="text-muted-foreground/30 text-xs uppercase tracking-[0.2em]">Portfolio</span>
             </div>
           </div>
         </div>
@@ -3008,14 +2970,13 @@ function PortfolioApp({ onAdminClick, cmsCases, onViewCMSCase, experienceItems, 
 }
 
 export default function App() {
-  const initialMode: AppMode = window.location.hash === "#admin" ? "adminLogin" : "portfolio";
-  const [mode, setMode] = useState<AppMode>(initialMode);
-  const [isAdmin, setIsAdmin] = useState(false);
-  const [cmsCases, setCmsCases] = useState<CMSCase[]>(loadCases);
-  const [experienceItems, setExperienceItems] = useState<ExperienceItem[]>(loadExperience);
-  const [aboutContent, setAboutContent] = useState<AboutContent>(loadAbout);
-  const [recommendations, setRecommendations] = useState<Recommendation[]>(loadRecommendations);
-  const [talksSection, setTalksSection] = useState<TalksSection>(loadTalks);
+  const [mode, setMode] = useState<AppMode>("portfolio");
+  const [isAdmin] = useState(false);
+  const [cmsCases, setCmsCases] = useState<CMSCase[]>(INITIAL_CMS_CASES);
+  const [experienceItems, setExperienceItems] = useState<ExperienceItem[]>(INITIAL_EXPERIENCE);
+  const [aboutContent, setAboutContent] = useState<AboutContent>(INITIAL_ABOUT);
+  const [recommendations, setRecommendations] = useState<Recommendation[]>(INITIAL_RECOMMENDATIONS);
+  const [talksSection, setTalksSection] = useState<TalksSection>(INITIAL_TALKS);
   const [ndaTarget, setNdaTarget] = useState<CMSCase | null>(null);
   const [viewerTarget, setViewerTarget] = useState<CMSCase | null>(null);
   const [unlocked, setUnlocked] = useState<Set<string>>(new Set());
@@ -3025,17 +2986,6 @@ export default function App() {
   const handleAboutChange = useCallback((a: AboutContent) => { setAboutContent(a); saveAbout(a); }, []);
   const handleRecommendationsChange = useCallback((r: Recommendation[]) => { setRecommendations(r); saveRecommendations(r); }, []);
   const handleTalksChange = useCallback((t: TalksSection) => { setTalksSection(t); saveTalks(t); }, []);
-
-  useEffect(() => {
-    const onHash = () => {
-      if (window.location.hash === "#admin") setMode("adminLogin");
-    };
-    window.addEventListener("hashchange", onHash);
-    return () => window.removeEventListener("hashchange", onHash);
-  }, []);
-
-  const handleLogin = () => { setIsAdmin(true); setMode("admin"); window.history.replaceState(null, "", " "); toast.success("Bem-vinda, Keziah!"); };
-  const handleLogout = () => { setIsAdmin(false); setMode("portfolio"); window.history.replaceState(null, "", " "); toast("Sessão encerrada"); };
 
   const handleViewCMSCase = (id: string) => {
     const c = cmsCases.find(x => x.id === id);
@@ -3053,7 +3003,6 @@ export default function App() {
     <LanguageProvider>
       {mode === "portfolio" && (
         <PortfolioApp
-          onAdminClick={() => setMode("adminLogin")}
           cmsCases={cmsCases}
           onViewCMSCase={handleViewCMSCase}
           experienceItems={experienceItems}
@@ -3062,13 +3011,11 @@ export default function App() {
           talksSection={talksSection}
         />
       )}
-      {mode === "adminLogin" && <AdminLogin onLogin={handleLogin} onBack={() => setMode("portfolio")} />}
-      {mode === "admin" && isAdmin && <AdminDashboard cases={cmsCases} onCasesChange={handleCasesChange} experience={experienceItems} onExperienceChange={handleExperienceChange} aboutContent={aboutContent} onAboutChange={handleAboutChange} recommendations={recommendations} onRecommendationsChange={handleRecommendationsChange} talksSection={talksSection} onTalksChange={handleTalksChange} onLogout={handleLogout} />}
       {mode === "ndaGate" && ndaTarget && (
         <NDAGate item={ndaTarget} onUnlock={() => { setUnlocked(s => new Set([...s, ndaTarget.id])); setViewerTarget(ndaTarget); setMode("caseViewer"); }} onBack={() => setMode("portfolio")} />
       )}
       {mode === "caseViewer" && viewerTarget && (
-        <CMSCaseViewer item={viewerTarget} onBack={() => setMode("portfolio")} isAdmin={isAdmin} onEdit={isAdmin ? () => setMode("admin") : undefined} />
+        <CMSCaseViewer item={viewerTarget} onBack={() => setMode("portfolio")} isAdmin={false} onEdit={undefined} />
       )}
       <Toaster richColors position="bottom-right" />
     </LanguageProvider>
