@@ -2929,7 +2929,7 @@ function PortfolioApp({ cmsCases, onViewCMSCase, experienceItems, aboutContent, 
 
   const handleNavigate = (page: string, projectId?: string) => {
     if (page === "case" && projectId === "bids") {
-      window.location.href = "/bids-static.html";
+      window.location.href = "/novoBO.html";
       return;
     }
 
