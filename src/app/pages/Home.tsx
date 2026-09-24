@@ -48,11 +48,11 @@ export function Home({ onNavigate, extraProjects = [], heroTitle, heroSubtitle, 
               Senior Product Designer
             </p>
 
-            <h1 className="text-foreground mb-8 leading-tight">
+            <h1 className="text-foreground mb-8 leading-[0.96] tracking-[-0.04em] max-w-[760px] text-[clamp(2.8rem,7vw,5.5rem)]">
               {heroTitle || data.hero.title}
             </h1>
 
-            <p className="text-muted-foreground text-lg md:text-xl mb-12 max-w-2xl leading-relaxed">
+            <p className="text-muted-foreground text-base md:text-xl mb-12 max-w-2xl leading-relaxed">
               {heroSubtitle || data.hero.subtitle}
             </p>
 
