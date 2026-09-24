@@ -2928,6 +2928,11 @@ function PortfolioApp({ cmsCases, onViewCMSCase, experienceItems, aboutContent, 
     }));
 
   const handleNavigate = (page: string, projectId?: string) => {
+    if (page === "case" && projectId === "bids") {
+      window.location.href = "/bids-static.html";
+      return;
+    }
+
     // If the ID belongs to a CMS case, open the CMS viewer instead
     if (page === "case" && projectId && cmsCases.find(c => c.id === projectId)) {
       onViewCMSCase(projectId);
