@@ -317,7 +317,7 @@ export const portfolioData = {
         id: "exp-002",
         role: "Senior Product Designer",
         company: "Samsung Electronics",
-        period: "2020 - 2023",
+        period: "2020 - 2024",
         current: false,
         description: [
           "Atuei no desenvolvimento de produtos digitais, conectando necessidades dos usuários, objetivos de negócio e tecnologia",
