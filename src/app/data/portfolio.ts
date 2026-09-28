@@ -105,6 +105,7 @@ export const portfolioData = {
           ]
         }
       },
+      /*
       {
         id: "enterprise-mobile",
         title: "Enterprise Mobile Platform",
@@ -297,6 +298,7 @@ export const portfolioData = {
           ]
         }
       }
+      */
     ],
     experience: [
       {
