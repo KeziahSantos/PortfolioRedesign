@@ -42,13 +42,13 @@ export const portfolioData = {
     projects: [
       {
         id: "bids",
-        title: "Novo Boletim de Ocorrência de Pernambuco",
+        title: "Novo Boletim de Ocorrência de Pernambuco - Em desenvolvimento",
         description: "Redesenhando um serviço público essencial: transformamos o registro de ocorrências em uma experiência mais simples, acessível e confiável para cidadãos e profissionais da segurança pública.",
         tags: ["Governo", "UX Research", "Service Design", "Acessibilidade", "Segurança Pública"],
         category: "Government",
         nda: false,
         hero: {
-          title: "Novo Boletim de Ocorrência de Pernambuco",
+          title: "Novo Boletim de Ocorrência de Pernambuco - Em desenvolvimento",
           subtitle: "Redesenhando um serviço público essencial",
           client: "Polícia Civil - Governo de Pernambuco",
           role: "Senior Product Designer",
