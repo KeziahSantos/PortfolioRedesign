@@ -684,12 +684,11 @@
         box-shadow: 0 10px 30px rgba(20,20,20,0.04);
       }
 
-      .embed-wrapper iframe {
+      .embed-wrapper video {
         display: block;
         width: 100%;
-        min-height: 620px;
-        height: 100%;
-        border: 0;
+        height: auto;
+        max-height: 760px;
         background: white;
       }
 
@@ -901,13 +900,15 @@
         <p><strong>Vídeo criado para o Storyboard em 9 quadros: a jornada de ansiedade e alívio do envio de dados.</strong></p>
 
         <div class="embed-wrapper">
-          <iframe
-            src="AppLume-IA.mp4"
+          <video
+            controls
+            playsinline
+            preload="metadata"
             title="Vídeo do storyboard de IA do projeto Lume Saúde"
-            allowfullscreen="true"
-            mozallowfullscreen="true"
-            webkitallowfullscreen="true"
-          ></iframe>
+          >
+            <source src="/AppLume-IA.mp4" type="video/mp4" />
+            Seu navegador não conseguiu carregar o vídeo. <a href="/AppLume-IA.mp4">Abrir o vídeo</a>.
+          </video>
         </div>
       </section>
 
