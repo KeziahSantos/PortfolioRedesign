@@ -105,20 +105,19 @@ export const portfolioData = {
           ]
         }
       },
-      /*
       {
         id: "enterprise-mobile",
-        title: "Enterprise Mobile Platform",
-        description: "Plataforma mobile empresarial para gestão de força de trabalho em campo, otimizando processos e aumentando produtividade.",
-        tags: ["Enterprise", "Mobile", "NDA"],
-        category: "Enterprise",
+        title: "Saúde Centralizada: Reduzindo a carga invisível de cuidadores com Design Inclusivo e IA",
+        description: "Como o ecossistema de saúde transfere a responsabilidade da integração para o usuário, e como a Inteligência Artificial nos ajudou a encontrar gargalos invisíveis no nosso protótipo antes de ir a campo.",
+        tags: ["IA", "DesignIA", "IA Case"],
+        category: "Case IA",
         nda: true,
         hero: {
-          title: "Enterprise Mobile Platform",
-          subtitle: "Transformando a gestão de operações em campo",
-          client: "Leading Tech Enterprise",
+          title: "ESaúde Centralizada: Reduzindo a carga invisível de cuidadores com Design Inclusivo e IA",
+          subtitle: "Como o ecossistema de saúde transfere a responsabilidade da integração para o usuário, e como a Inteligência Artificial nos ajudou a encontrar gargalos invisíveis no nosso protótipo antes de ir a campo.",
+          client: "Cesar School - Projeto de Pesquisa em IA",
           role: "Senior Product Designer",
-          year: "2021-2022"
+          year: "206"
         },
         context: {
           title: "Contexto",
@@ -170,6 +169,7 @@ export const portfolioData = {
           ]
         }
       },
+      /*
       {
         id: "design-system",
         title: "Corporate Design System",
@@ -233,7 +233,8 @@ export const portfolioData = {
             "Melhoria nas métricas de acessibilidade"
           ]
         }
-      },
+      }, */
+      /*
       {
         id: "transparency-portal",
         title: "Portal da Transparência",
@@ -297,8 +298,7 @@ export const portfolioData = {
             "Reconhecimento em prêmio de inovação governamental"
           ]
         }
-      }
-      */
+      } */
     ],
     experience: [
       {
@@ -528,6 +528,7 @@ export const portfolioData = {
           ]
         }
       },
+      /*
       {
         id: "design-system",
         title: "Corporate Design System",
@@ -591,7 +592,8 @@ export const portfolioData = {
             "Improved accessibility metrics"
           ]
         }
-      },
+      }, */
+      /*
       {
         id: "transparency-portal",
         title: "Transparency Portal",
@@ -655,7 +657,7 @@ export const portfolioData = {
             "Recognition in government innovation award"
           ]
         }
-      }
+      } */
     ],
     experience: [
       {

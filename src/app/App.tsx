@@ -2933,6 +2933,11 @@ function PortfolioApp({ cmsCases, onViewCMSCase, experienceItems, aboutContent, 
       return;
     }
 
+    if (page === "case" && projectId === "enterprise-mobile") {
+      window.location.href = "/designIA.html";
+      return;
+    }
+
     // If the ID belongs to a CMS case, open the CMS viewer instead
     if (page === "case" && projectId && cmsCases.find(c => c.id === projectId)) {
       onViewCMSCase(projectId);
